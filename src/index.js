@@ -1,27 +1,20 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from './components/About';
+// import About from './components/About';
 import Error from './components/Error';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
 import RestaurantMenu from './components/RestaurantMenu';
 import Profile from './components/ProfileClass';
+import Shimmer from './components/Shimmer';
 
-//Assignment 1
-// const h1 = React.createElement("h1", {}, "Namaste React");
 
-// const h2 = React.createElement("h2", {}, "Hi");
-
-// const container = React.createElement("div", {}, [h1,h2]);
-
-//Assignment 3
-
-// const header = React.createElement("div",{id: "title"}, [React.createElement("h1", {}, "first"),React.createElement("h2",{},"second"), React.createElement("h3",{},"third")]);
-
+const Instamart = lazy(() => import("./components/Instamart"));
+const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
   return(
@@ -45,7 +38,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About />,
+        element: <Suspense><About /></Suspense>,
         children: [
           {
             path: "profile",
@@ -64,6 +57,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/restaurant/:id',
         element: <RestaurantMenu />
+      },
+      {
+        path: '/instamart',
+        element: <Suspense fallback={<Shimmer />}><Instamart /></Suspense>,
       }
     ]
   },  

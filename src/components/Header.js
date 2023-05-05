@@ -8,7 +8,7 @@ const loggedInUser = () => {
 
 
 const logo = (
-  <img src='https://www.shutterstock.com/image-vector/mood-food-lettering-illustration-smile-260nw-1566292654.jpg' alt='logo' className='logo'/>
+  <img src='https://www.shutterstock.com/image-vector/mood-food-lettering-illustration-smile-260nw-1566292654.jpg' alt='logo' className='h-12'/>
 );
 
 const Header = () => {
@@ -18,17 +18,17 @@ const Header = () => {
   const isOnline = useOnline();
 
   return(
-    <div className='header'>
+    <div className='flex align-center p-4 justify-between shadow-md m-4 bg-pink-50'>
       {logo}
-      <ul className='nav-links__wrapper'>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/cart">Cart</Link></li>
-        <li><Link to="/instamart">Instamart</Link></li>
+      <ul className='flex'>
+        <li className='p-2'><Link to="/">Home</Link></li>
+        <li className='p-2'><Link to="/about">About</Link></li>
+        <li className='p-2'><Link to="/contact">Contact</Link></li>
+        <li className='p-2'><Link to="/cart">Cart</Link></li>
+        <li className='p-2'><Link to="/instamart">Instamart</Link></li>
       </ul>
 
-      <h3>{isOnline ? '😀' : '😪'}</h3>
+      <h3 className='p-2'>{isOnline ? '😀' : '😪'}</h3>
 
       {
         isLoggedIn ? <button onClick={() => {setIsLoggedIn(false)}}>Logout </button> : <button onClick={() => {setIsLoggedIn(true)}}>LogIn</button>

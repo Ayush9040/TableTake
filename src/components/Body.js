@@ -39,11 +39,11 @@ return (allRestaurant?.length === 0) ? <Shimmer /> : (
 
     {/* Search */}
 
-    <div className='search-container'>
-      <input type='text' className='search' value={searchText} onChange={(e) => {
+    <div className='search-container p-5 m-2 bg-pink-50'>
+      <input type='text' className='p-2 m-2 focus:bg-green-50 focus:border-none' placeholder='Search' value={searchText} onChange={(e) => {
         setSearchText(e.target.value)
         }} />
-      <button onClick={(e) => {
+      <button className='p-1 m-2 text-white bg-purple-500 rounded-md hover:bg-purple-100 hover:text-pink-500' onClick={(e) => {
         const data = filterData(searchText, allRestaurant);
         setFilteredRestaurant(data);
       }}>Search</button>
@@ -52,7 +52,7 @@ return (allRestaurant?.length === 0) ? <Shimmer /> : (
 
 
     {/* Restaurants */}
-    <div className='card-container'>
+    <div className='flex flex-wrap'>
     {
       filteredRestaurant.map((restaurant) => {
           return(
